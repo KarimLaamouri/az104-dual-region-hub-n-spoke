@@ -34,7 +34,7 @@ Build a production-ready Azure network topology that includes:
 
 | Concept | Problem | Solution in This Lab |
 |---------|---------|---------------------|
-| **Gateway Transit** | Spokes can't reach On-Premises through Hub's gateway by default | Enable `--allow-gateway-transit` and `--use-remote-gateways` on Spoke peering |
+| **Gateway Transit** | Spokes can't reach On-Premises through Hub's gateway by default | Enable `--allow-gateway-transit` on Hub2Spoke peering and `--use-remote-gateways` on Spoke2Hub peering |
 | **Transitive Routing** | VNet peering is non-transitive (Spoke-East → Hub-East → Hub-West → Spoke-West fails) | Deploy Linux NVAs with IP forwarding + UDRs pointing to NVA as next-hop |
 | **Forwarded Traffic** | NVAs won't accept cross-region traffic without this flag | Enable `--allow-forwarded-traffic true` on Hub-to-Hub peering |
 

@@ -47,15 +47,15 @@ with Diagram("Azure Dual-Region Hub & Spoke Lab", show=True, direction="LR", gra
 
     # --- CONNECTIONS & ROUTING LOGIC ---
     
-    # 1. Site-to-Site VPN Tunnels
-    miami_gw <>> Edge(color="darkgreen", style="bold", label="S2S IPsec VPN") << hub_east_gw
-    hub_west_gw <>> Edge(color="darkgreen", style="bold", label="S2S IPsec VPN") << la_gw
+    # 1. Site-to-Site VPN Tunnels (Bidirectional)
+    miami_gw - Edge(color="darkgreen", style="bold", label="S2S IPsec VPN", dir="both") - hub_east_gw
+    hub_west_gw - Edge(color="darkgreen", style="bold", label="S2S IPsec VPN", dir="both") - la_gw
 
-    # 2. Local VNet Peering with Gateway Transit
-    hub_east_gw <>> Edge(color="blue", label="Peering\n(Transit)") << spoke_east_wl
-    hub_west_gw <>> Edge(color="blue", label="Peering\n(Transit)") << spoke_west_wl
+    # 2. Local VNet Peering with Gateway Transit (Bidirectional)
+    hub_east_gw - Edge(color="blue", label="Peering\n(Transit)", dir="both") - spoke_east_wl
+    hub_west_gw - Edge(color="blue", label="Peering\n(Transit)", dir="both") - spoke_west_wl
 
     # 3. Transitive Routing Path via NVAs over Global VNet Peering
     rt_east >> Edge(color="red", style="dashed", label="UDR Path") >> nva_east
-    nva_east <>> Edge(color="purple", style="bold", label="Global Peering\n(Forwarded Traffic)") << nva_west
+    nva_east - Edge(color="purple", style="bold", label="Global Peering\n(Forwarded Traffic)", dir="both") - nva_west
     nva_west << Edge(color="red", style="dashed", label="UDR Path") << rt_west

@@ -30,6 +30,8 @@ Build a production-ready Azure network topology that includes:
 | **OnPrem-Miami** | East US | `192.168.1.0/24` | Simulated On-Prem (S2S VPN) |
 | **OnPrem-LA** | West US | `192.168.2.0/24` | Simulated On-Prem (S2S VPN) |
 
+![Project Screenshot](azure_dual-region_hub_&_spoke_lab.png)
+
 ### Key Network Concepts Demonstrated
 
 | Concept | Problem | Solution in This Lab |
